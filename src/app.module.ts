@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
+import { MemberController } from './member/member.controller'
 import { TypeOrm } from './TypeORM'
 
 @Module({
@@ -14,7 +15,7 @@ import { TypeOrm } from './TypeORM'
     }),
     TypeOrmModule.forRoot({ ...TypeOrm, autoLoadEntities: true }),
   ],
-  controllers: [AppController],
+  controllers: [AppController, MemberController],
   providers: [AppService],
 })
 export class AppModule {}

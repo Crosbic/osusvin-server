@@ -14,7 +14,7 @@ export class Member {
   @Column({
     nullable: false,
   })
-  avatarURL: string
+  avatarUrl: string
 
   @Column({
     nullable: false,
