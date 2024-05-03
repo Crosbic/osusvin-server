@@ -6,6 +6,8 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { MemberController } from './member/member.controller'
 import { TypeOrm } from './TypeORM'
+import { MemberService } from './member/member.service'
+import { MemberModule } from './member/member.module'
 
 @Module({
   imports: [
@@ -13,9 +15,9 @@ import { TypeOrm } from './TypeORM'
       envFilePath: '.env',
       isGlobal: true,
     }),
-    TypeOrmModule.forRoot({ ...TypeOrm, autoLoadEntities: true }),
+    TypeOrmModule.forRoot({ ...TypeOrm, autoLoadEntities: true }), MemberModule,
   ],
-  controllers: [AppController, MemberController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
