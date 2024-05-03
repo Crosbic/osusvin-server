@@ -1,8 +1,6 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
+import { Controller, Get } from '@nestjs/common'
 
-import { CreateMemberDto } from './dto/create-members.dto'
-import { UpdateMemberDto } from './dto/update-members.dto'
-import { MemberService } from './member.service'
+import { MemberService } from './members.service'
 
 @Controller('member')
 export class MemberController {

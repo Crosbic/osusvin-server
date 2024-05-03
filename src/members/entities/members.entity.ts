@@ -1,5 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
+import { MemberRole } from '../types/MemberRole'
+
 @Entity()
 export class Member {
   @PrimaryGeneratedColumn()
@@ -12,9 +14,9 @@ export class Member {
   avatarUrl: string
 
   @Column({
-    nullable: false
+    nullable: false,
   })
-  flag_url: string;
+  flag_url: string
 
   @Column({
     unique: true,
@@ -23,19 +25,26 @@ export class Member {
   username: string
 
   @Column({
-    nullable: false
+    nullable: false,
   })
-  pp: number;
+  pp: number
 
   @Column({
     unique: true,
     nullable: false,
   })
-  rank: number;
+  rank: number
 
   @Column({
-    type: "real",
-    nullable: false
+    type: 'real',
+    nullable: false,
   })
-  accuracy: number;
+  accuracy: number
+
+  @Column({
+    type: 'enum',
+    enum: MemberRole,
+    default: MemberRole.USER,
+  })
+  role: MemberRole
 }
