@@ -4,10 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
-import { MemberController } from './member/member.controller'
+import { MemberController } from './members/members.controller'
 import { TypeOrm } from './TypeORM'
-import { MemberService } from './member/member.service'
-import { MemberModule } from './member/member.module'
+import { MemberService } from './members/members.service'
+import { MemberModule } from './members/members.module'
 
 @Module({
   imports: [

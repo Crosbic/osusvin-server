@@ -16,16 +16,11 @@ export class MemberService{
 		return this.members.find()
 	}
 
-	// getById(id: number){
-	// 	return this.members.find(el => el.id === id)
-	// }
+	async getById(id: number): Promise<Member | null>{
+		return this.members.findOneBy({id})
+	}
 
-	// create(memberDto: CreateMemberDto){
-	// 	this.members.push({
-	// 		...memberDto,
-	// 		id: Date.now().toString()
-	// 	}
-			
-	// 	)
-	// }
+	async create(memberDto: CreateMemberDto): Promise<void>{
+				this.members.create(memberDto)
+		}
 }
