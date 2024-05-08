@@ -4,13 +4,12 @@ import { MemberService } from './members.service'
 import { CreateMemberDto } from './dto/create-members.dto'
 import { Member } from './entities/members.entity'
 
-@Controller('member')
+@Controller('members')
 export class MemberController {
   constructor(private readonly memberService: MemberService) {}
 
   @Get('all')
   getAll(): Promise<Member[]> {
-    console.log("Get method called")
     return this.memberService.getAll()
   }
 
