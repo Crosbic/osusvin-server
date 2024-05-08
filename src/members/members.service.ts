@@ -1,26 +1,26 @@
-import { Injectable } from "@nestjs/common";
-import { CreateMemberDto } from "./dto/create-members.dto";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Member } from "./entities/members.entity";
-import { Repository } from "typeorm";
+import { Injectable } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
 
+import { CreateMemberDto } from './dto/create-members.dto'
+import { Members } from './entities/members.entity'
 
 @Injectable()
-export class MemberService{
-	constructor(
-		@InjectRepository(Member)
-		private readonly members: Repository<Member>
-	){}
+export class MemberService {
+  constructor(
+    @InjectRepository(Members)
+    private readonly members: Repository<Members>
+  ) {}
 
-	async getAll(): Promise<Member[]> {
-		return this.members.find()
-	}
+  async getAll(): Promise<Members[]> {
+    return this.members.find()
+  }
 
-	async getById(id: number): Promise<Member | null>{
-		return this.members.findOneBy({id})
-	}
+  async getById(id: number): Promise<Members | null> {
+    return this.members.findOneBy({ id })
+  }
 
-	async create(memberDto: CreateMemberDto): Promise<void>{
-				this.members.create(memberDto)
-		}
+  async createMember(memberDto: CreateMemberDto): Promise<Members> {
+    return this.members.save(memberDto)
+  }
 }

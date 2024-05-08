@@ -1,26 +1,34 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, Post } from '@nestjs/common'
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  Post,
+} from '@nestjs/common'
 
-import { MemberService } from './members.service'
 import { CreateMemberDto } from './dto/create-members.dto'
-import { Member } from './entities/members.entity'
+import { Members } from './entities/members.entity'
+import { MemberService } from './members.service'
 
 @Controller('members')
 export class MemberController {
   constructor(private readonly memberService: MemberService) {}
 
   @Get('all')
-  getAll(): Promise<Member[]> {
+  getAll(): Promise<Members[]> {
     return this.memberService.getAll()
   }
 
   @Get(':id')
-  getById(@Param('id') id: number): Promise<Member> {
+  getById(@Param('id') id: number): Promise<Members> {
     return this.memberService.getById(id)
   }
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  create(@Body() createMemberDto: CreateMemberDto): Promise<void>{
-    return this.memberService.create(createMemberDto)
+  create(@Body() createMemberDto: CreateMemberDto): Promise<Members> {
+    return this.memberService.createMember(createMemberDto)
   }
 }

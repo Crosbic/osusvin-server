@@ -4,10 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
-import { MemberController } from './members/members.controller'
-import { TypeOrm } from './TypeORM'
-import { MemberService } from './members/members.service'
 import { MemberModule } from './members/members.module'
+import { TypeOrm } from './TypeORM'
 
 @Module({
   imports: [
@@ -15,7 +13,8 @@ import { MemberModule } from './members/members.module'
       envFilePath: '.env',
       isGlobal: true,
     }),
-    TypeOrmModule.forRoot({ ...TypeOrm, autoLoadEntities: true }), MemberModule,
+    TypeOrmModule.forRoot({ ...TypeOrm, autoLoadEntities: true }),
+    MemberModule,
   ],
   controllers: [AppController],
   providers: [AppService],
